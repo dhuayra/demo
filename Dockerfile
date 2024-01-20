@@ -13,12 +13,12 @@ COPY . .
 # Copia el archivo de configuración de entorno
 COPY .env.example .env
 
-# Genera la clave de la aplicación
-RUN php artisan key:generate
-
 # Instala las dependencias de Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-interaction --no-scripts --no-suggest --optimize-autoloader
+
+# Genera la clave de la aplicación
+RUN php artisan key:generate
 
 # Cambia los permisos para evitar problemas de escritura
 RUN chown -R www-data:www-data storage bootstrap/cache
