@@ -19,7 +19,7 @@ COPY . .
 COPY .env.example .env
 
 # Instala las dependencias de Composer
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-interaction --no-scripts --no-suggest --optimize-autoloader
 
 # Cambia los permisos para evitar problemas de escritura
