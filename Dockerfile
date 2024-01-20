@@ -20,7 +20,7 @@ COPY .env.example .env
 
 # Instala las dependencias de Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --optimize-autoloader
+RUN composer install
 
 # Cambia los permisos para evitar problemas de escritura
 #RUN chown -R www-data:www-data storage bootstrap/cache
