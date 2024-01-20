@@ -19,10 +19,11 @@ COPY .env.example .env
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Descarga e instala Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN export COMPOSER_ALLOW_SUPERUSER=1 && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Muestra la información de Composer
-RUN composer --version
+RUN export COMPOSER_ALLOW_SUPERUSER=1 && composer --version
 
 # Genera la clave de la aplicación
 RUN php artisan key:generate
