@@ -13,6 +13,10 @@ RUN apt-get update && \
 RUN export COMPOSER_ALLOW_SUPERUSER=1 && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Actualiza Composer
+RUN export COMPOSER_ALLOW_SUPERUSER=1 && \
+    composer self-update --2
+
 # Instala las dependencias de Composer
 RUN export COMPOSER_ALLOW_SUPERUSER=1 && \
     composer install --no-interaction --no-scripts --optimize-autoloader
